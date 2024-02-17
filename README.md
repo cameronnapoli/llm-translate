@@ -44,7 +44,6 @@ translator.translate(text, sourceLanguage, targetLanguage, options, openaiOption
   .catch((error) => {
     console.error(error);
   });
-
 ```
 
 ## Supported Languages
