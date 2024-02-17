@@ -49,4 +49,12 @@ translator.translate(text, sourceLanguage, targetLanguage, options, openaiOption
 
 ## Supported Languages
 
-A subset of [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) language codes are supported.
+All [ISO 639-1](https://en.wikipedia.org/wiki/ISO_639-1) language codes can be passed into the LLM. The quality of translations will be lower for languages that are less common on the internet.
+
+## LLM Performance
+
+The GPT-4 MMLU case study from OpenAI is a good example of relative performance you might expect. [The image below shows the performance on a complex test, the MMLU](https://openai.com/research/gpt-4). As you can see, less common languages will have lower performance than more common languages.
+
+**(This is not an image of translation performance. The translation performance will be higher than this.)**
+
+![OpenAI Language Performance](assets/openai-language-performance.png)
