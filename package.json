@@ -9,7 +9,10 @@
     "llm",
     "translate",
     "language",
-    "api"
+    "api",
+    "localization",
+    "openai",
+    "gpt"
   ],
   "main": "index.js",
   "scripts": {
