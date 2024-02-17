@@ -29,8 +29,11 @@ const translator = new OpenAITranslator({
 const text = 'Hello, world!';
 const sourceLanguage = 'en';
 const targetLanguage = 'es';
+const options = {
+  model: 'gpt-4',
+}
 
-translator.translate(text, sourceLanguage, targetLanguage)
+translator.translate(text, sourceLanguage, targetLanguage, options)
   .then((translation) => {
     console.log(translation);
   })

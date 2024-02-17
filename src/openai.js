@@ -54,6 +54,13 @@ class OpenAITranslator {
 
     const result = await response.json();
 
+    if (!result) {
+      throw new Error('Failed to parse response');
+    }
+    if (result.error) {
+      throw new Error(result.error.message);
+    }
+
     return result.choices[0].message.content;
   }
 }
