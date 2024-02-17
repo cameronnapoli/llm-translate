@@ -1,6 +1,6 @@
 {
   "name": "llm-translate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Translate text using LLM APIs.",
   "author": "Cameron Napoli",
   "repository": "github:cameronnapoli/llm-translate",
@@ -13,6 +13,6 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node tests/index.js"
   }
 }

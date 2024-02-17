@@ -1,5 +1,5 @@
-const translate = () => {
-  return null;
-};
+const { OpenAITranslator } = require('./src/openai.js');
 
-module.exports = translate;
+module.exports = {
+  OpenAITranslator,
+};
