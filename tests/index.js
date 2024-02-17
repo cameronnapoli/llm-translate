@@ -5,13 +5,30 @@ const main = async () => {
     apiKey: process.env.OPENAI_API_KEY,
   });
   
-  const text = 'Hello, how are you?';
-  const source = 'en';
-  const target = 'es';
+  const text1 = 'Send';
+  const translation1 = await translator.translate(
+    'Send',
+    'en',
+    'es',
+    {
+      context: 'This is a button in an app.',
+    },
+    {
+      model: 'gpt-3.5-turbo',
+      temperature: 0.3,
+    },
+  );
   
-  const translation = await translator.translate(text, source, target);
-  
-  console.log(translation);
+  console.log(text1, '->', translation1);
+
+  const text2 = 'Bonjour le monde';
+  const translation2 = await translator.translate(
+    text2,
+    'fr',
+    'en',
+  );
+
+  console.log(text2, '->', translation2);
 };
 
 main();

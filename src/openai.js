@@ -2,7 +2,9 @@ const {
   codeToLanguage,
 } = require('./constants.js');
 
-const createPrompt = (text, source, target) => {
+const createPrompt = (text, source, target, options) => {
+  const { context } = options || {};
+
   const sourceLanguage = codeToLanguage[source];
   const targetLanguage = codeToLanguage[target];
   if (!sourceLanguage) {
@@ -12,7 +14,14 @@ const createPrompt = (text, source, target) => {
     throw new Error(`Invalid target language code: ${target}`);
   }
 
-  return `Translate from ${sourceLanguage} to ${targetLanguage}:\n${text}\n\nTranslation:`;
+  return [
+    `Translate the following from ${sourceLanguage} to ${targetLanguage}.`,
+    `Text:: ${text}`,
+    context ? `Context:: ${context}` : null,
+    'Translation::',
+  ]
+    .filter((x) => !!x)
+    .join('\n');
 }
 
 /**
@@ -34,16 +43,23 @@ class OpenAITranslator {
    * @param {string} text - The text to be translated.
    * @param {string} source - The language code of the source language.
    * @param {string} target - The language code of the target language.
-   * @param {Object.<string, *>} options - Configuration options to be passed to OpenAI (e.g. model, temperature, etc.): https://platform.openai.com/docs/api-reference/chat/create
+   * @param {Object} options - Configuration options for the translation.
+   * @param {string} options.context - A one sentence description of the context in which the text is being translated.
+   * @param {Object.<string, *>} openaiOptions - Configuration options to be passed to OpenAI (e.g. model, temperature, etc.): https://platform.openai.com/docs/api-reference/chat/create
    * @returns {Promise<string>} - The translated text.
    */
-  async translate(text, source, target, options) {
+  async translate(text, source, target, options, openaiOptions) {
     if (!this.apiKey) {
       throw new Error('API key is required');
     }
-    const model = options?.model || 'gpt-3.5-turbo';
+    const model = openaiOptions?.model || 'gpt-3.5-turbo';
 
-    const prompt = createPrompt(text, source, target);
+    const prompt = createPrompt(
+      text,
+      source,
+      target,
+      { context: (options || {}).context },
+    );
     
     const headers = {
       'Content-Type': 'application/json',
@@ -52,7 +68,7 @@ class OpenAITranslator {
     const body = {
       model,
       messages: [{ role: 'system', content: prompt }],
-      ...(options || {}),
+      ...(openaiOptions || {}),
     };
     
     const response = await fetch(

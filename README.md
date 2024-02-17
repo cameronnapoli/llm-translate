@@ -26,14 +26,18 @@ const translator = new OpenAITranslator({
   apiKey: '',
 })
 
-const text = 'Hello, world!';
+const text = 'Send';
 const sourceLanguage = 'en';
 const targetLanguage = 'es';
 const options = {
+  context: 'This is a button in a user interface.',
+}
+const openaiOptions = {
   model: 'gpt-4',
+  temperature: 0.3,
 }
 
-translator.translate(text, sourceLanguage, targetLanguage, options)
+translator.translate(text, sourceLanguage, targetLanguage, options, openaiOptions)
   .then((translation) => {
     console.log(translation);
   })
