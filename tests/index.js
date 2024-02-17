@@ -1,4 +1,4 @@
-const { OpenAITranslator } = require('../src/openai.js');
+import { OpenAITranslator } from '../src/openai';
 
 const main = async () => {
   const translator = new OpenAITranslator({
