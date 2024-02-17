@@ -2,10 +2,17 @@
   "name": "llm-translate",
   "version": "1.0.0",
   "description": "Translate text using LLM APIs.",
+  "author": "Cameron Napoli",
+  "repository": "github:cameronnapoli/llm-translate",
+  "license": "MIT",
+  "keywords": [
+    "llm",
+    "translate",
+    "language",
+    "api"
+  ],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Cameron Napoli",
-  "license": "ISC"
+  }
 }
