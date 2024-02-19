@@ -19,10 +19,10 @@ const createPrompt = (text, source, target, options) => {
   }
 
   return [
-    `Translate the following from ${sourceLanguage} to ${targetLanguage}.`,
-    `Text:: ${text}`,
-    context ? `Context:: ${context}` : null,
-    'Translation::',
+    `Translate the following from the ${sourceLanguage} language to the ${targetLanguage} language.`,
+    `TEXT:: ${text}`,
+    context ? `CONTEXT:: ${context}` : null,
+    'TRANSLATION::',
   ]
     .filter((x) => !!x)
     .join('\n');
