@@ -5,6 +5,10 @@ const {
 const createPrompt = (text, source, target, options) => {
   const { context } = options || {};
 
+  if (!text) {
+    throw new Error('Text is required');
+  }
+
   const sourceLanguage = codeToLanguage[source];
   const targetLanguage = codeToLanguage[target];
   if (!sourceLanguage) {
