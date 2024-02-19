@@ -21,6 +21,20 @@ const tests = [
     to: 'en',
     expected: 'Hello world',
   },
+  {
+    text: 'American',
+    from: 'en',
+    to: 'es',
+    context: 'American woman',
+    expected: 'Estadounidense',
+  },
+  {
+    text: 'Run',
+    from: 'en',
+    to: 'ja',
+    context: 'This is a button in an app.',
+    expected: '実行',
+  }
 ]
 
 const main = async () => {
