@@ -1,6 +1,6 @@
 {
   "name": "llm-translate",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Translate text using LLM APIs.",
   "author": "Cameron Napoli",
   "repository": "github:cameronnapoli/llm-translate",
@@ -17,5 +17,8 @@
   "main": "index.js",
   "scripts": {
     "test": "node tests/index.js"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5"
   }
 }

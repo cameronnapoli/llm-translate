@@ -9,17 +9,25 @@ const createPrompt = (text, source, target, options) => {
     throw new Error('Text is required');
   }
 
-  const sourceLanguage = codeToLanguage[source];
-  const targetLanguage = codeToLanguage[target];
-  if (!sourceLanguage) {
-    throw new Error(`Invalid source language code: ${source}`);
+  let sourceText = '';
+  if (source) {
+    const sourceLanguage = codeToLanguage[source];
+    if (!sourceLanguage) {
+      throw new Error(`Invalid source language code: ${source}`);
+    }
+    sourceText = `from the ${sourceLanguage} language `;
+  } else {
+    // default to detecting the source language
+    source = 'from the language detected in the text';
   }
+
+  const targetLanguage = codeToLanguage[target];
   if (!targetLanguage) {
     throw new Error(`Invalid target language code: ${target}`);
   }
 
   return [
-    `Translate the following from the ${sourceLanguage} language to the ${targetLanguage} language.`,
+    `Translate the following ${sourceText} to the ${targetLanguage} language.`,
     context ? 'Use the following context to help with the text translation.' : null,
     context ? `CONTEXT:: ${context}` : null,
     `TEXT:: ${text}`,
@@ -46,7 +54,7 @@ class OpenAITranslator {
   /**
    * Translates the given text from the source language to the target language.
    * @param {string} text - The text to be translated.
-   * @param {string} source - The language code of the source language.
+   * @param {string | null} source - The language code of the source language.
    * @param {string} target - The language code of the target language.
    * @param {Object} options - Configuration options for the translation.
    * @param {string} options.context - A one sentence description of the context in which the text is being translated.

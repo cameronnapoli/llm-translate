@@ -1,5 +1,7 @@
 const { OpenAITranslator } = require('../src/openai.js');
 
+require('dotenv').config();
+
 const tests = [
   {
     text: 'Send',
@@ -25,7 +27,7 @@ const tests = [
     text: 'American',
     from: 'en',
     to: 'es',
-    context: 'American woman',
+    context: 'Describing an american woman (from the USA)',
     expected: 'Estadounidense',
   },
   {
@@ -34,7 +36,21 @@ const tests = [
     to: 'ja',
     context: 'This is a button in an app.',
     expected: '実行',
-  }
+  },
+  {
+    text: '¿Donde estabas ayer?',
+    from: null,
+    to: 'en',
+    context: null,
+    expected: 'Where were you yesterday?',
+  },
+  {
+    text: '¿Donde estabas ayer?',
+    from: null,
+    to: 'en',
+    context: 'An exchange between two people.',
+    expected: 'Where were you yesterday?',
+  },
 ]
 
 const main = async () => {
