@@ -1,4 +1,5 @@
 .env
 .env.local
+yarn-error.log
 .DS_Store
 node_modules/
