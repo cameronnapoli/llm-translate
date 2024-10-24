@@ -1,8 +1,10 @@
 # LLM Translate
 
+Translate text using an LLM API.
+
 [![NPM version](https://img.shields.io/npm/v/llm-translate.svg)](https://npmjs.org/package/llm-translate)
 
-Translate text using an LLM API.
+[Npm package](https://www.npmjs.com/package/llm-translate)
 
 ## Supported LLM APIs
 
@@ -13,7 +15,11 @@ Translate text using an LLM API.
 
 ```sh
 npm install llm-translate
-# or
+```
+
+or
+
+```sh
 yarn add llm-translate
 ```
 
